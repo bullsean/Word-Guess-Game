@@ -4,7 +4,73 @@
 
 //Message that states: Press any key to get started!
 //Listener for a key being pressed
+//Word Bank
+var wordList = ["chrome", "firefox", "codepen", "javascript", "jquery", "twitter", "github", "wordpress", "opera", "sass", "layout", "standards", "semantic", "designer", "developer", "module", "component", "website", "creative", "banner", "browser", "screen", "mobile", "footer", "header", "typography", "responsive", "programmer", "css", "border", "compass", "grunt", "pixel", "document", "object", "ruby", "modernizr", "bootstrap", "python", "php", "pattern", "ajax", "node", "element", "android", "application", "adobe", "apple", "google", "microsoft", "bookmark", "internet", "icon", "svg", "background", "property", "syntax", "flash", "html", "font", "blog", "network", "server", "content", "database", "socket", "function", "variable", "link", "apache", "query", "proxy", "backbone", "angular", "email", "underscore", "cloud"];
+// wordList length = 77 (76 indeces)
 //Function to select random word from word bank
+var randomChoice = Math.floor(Math.random()*wordList.length);
+var answer = wordList[randomChoice];
+var wordLength = answer.length;
+var dashes = [wordLength];
+var win = wordLength;
+var letters = answer.split('');
+var remainingGuesses = 12;
+var output = "";
+var userGuess = "";
+var guessedLetters = [];
+
+console.log(answer);
+console.log(wordLength);
+console.log(dashes);
+console.log(letters);
+
+function gameStart() {
+    for (var i = 0; i < answer.length; i++) {
+        dashes[i] = "_ ";
+        output = output + dashes[i];
+    }
+    document.getElementById("game").innerHTML = output;
+    output ="";
+}
+
+gameStart();
+
+document.onkeyup = function (event) {
+    userGuess = event.key.toLowerCase();
+    console.log(userGuess);
+    guessedLetters.push(userGuess);
+    console.log(guessedLetters);
+
+    for (var j = 0; j<answer.length; j++) {
+        if (userGuess === answer[j]) {
+            dashes[j] = userGuess;
+        }
+        output = output + dashes[j] + "";
+    }
+    document.getElementById("game").innerHTML = output;
+    output ="";
+};
+
+
+
+// function guess() {
+//     document.onkeyup = function (event) {
+//         var guess = event.key.toLowerCase();
+//         console.log(letter);
+//         for (var j = 0; j < answer.length; j++) {
+//             if (answer[j] === guess) {
+//                 dashes[j] = guess;
+//             }   
+//         }
+//       };
+// }
+
+
+  
+  
+
+
+
 //Random word is displayed as dashes based on its length (array)
 //Counter when the person wins that adds one to their score
 //Function that shows letters guessed
