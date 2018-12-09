@@ -61,11 +61,16 @@ document.onkeyup = function (event) {
 
 
     // }
-    if (win<1) {
+    if (win < 1) {
         document.getElementById("message").innerHTML = "You Win!";
-    } else if
+        location.reload();
+    } else if (remainingGuesses === 0) {
+        document.getElementById("message").innerHTML = "You Lose :(";
+
+    }
 
     
+};
 };
 
 if(remainingGuesses === 0) {
