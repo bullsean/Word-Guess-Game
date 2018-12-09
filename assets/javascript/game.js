@@ -38,36 +38,44 @@ gameStart();
 document.onkeyup = function (event) {
     userGuess = event.key.toLowerCase();
     console.log(userGuess);
-    guessedLetters.push(userGuess);
-    console.log(guessedLetters);
-
-    for (var j = 0; j<answer.length; j++) {
-        if (userGuess === answer[j]) {
-            dashes[j] = userGuess;
+    
+    if (userGuess === "a" && remainingGuesses > 0 || userGuess === "b" && remainingGuesses > 0 || userGuess === "c" && remainingGuesses > 0 || userGuess === "d" && remainingGuesses > 0 || userGuess === "e" && remainingGuesses > 0 || userGuess === "f" && remainingGuesses > 0 || userGuess === "g" && remainingGuesses > 0 || userGuess === "h" && remainingGuesses > 0 || userGuess === "i" && remainingGuesses > 0 || userGuess === "j" && remainingGuesses > 0 || userGuess === "k" && remainingGuesses > 0 || userGuess === "l" && remainingGuesses > 0 || userGuess === "m" && remainingGuesses > 0 || userGuess === "n" && remainingGuesses > 0 || userGuess === "o" && remainingGuesses > 0 || userGuess === "p" && remainingGuesses > 0 || userGuess === "q" && remainingGuesses > 0 || userGuess === "r" && remainingGuesses > 0 || userGuess === "s" && remainingGuesses > 0 || userGuess === "t" && remainingGuesses > 0 || userGuess === "u" && remainingGuesses > 0 || userGuess === "v" && remainingGuesses > 0 || userGuess === "w" && remainingGuesses > 0 || userGuess === "x" && remainingGuesses > 0 || userGuess === "y" && remainingGuesses > 0 || userGuess === "z" && remainingGuesses > 0 ) {
+        for (var j = 0; j<answer.length; j++) {
+            if (userGuess === answer[j]) {
+                dashes[j] = userGuess;
+                win--;
+            } 
+            output = output + dashes[j] + "";
         }
-        output = output + dashes[j] + "";
-    }
-    document.getElementById("game").innerHTML = output;
-    output ="";
+        remainingGuesses--;
+        guessedLetters.push(userGuess);
+        console.log(guessedLetters);
+        document.getElementById("remainingGuesses").innerHTML = remainingGuesses;
+        document.getElementById("lettersGuessed").innerHTML = guessedLetters;
+        document.getElementById("game").innerHTML = output;
+        output ="";
+    // } else {
+    //     document.getElementById("message").innerHTML = "Please choose a letter!";
+    //     alert("You lose. Try again.");
+    //     gameStart();
+
+
+    // }
+    if (win<1) {
+        document.getElementById("message").innerHTML = "You Win!";
+    } else if
+
+    
 };
 
+if(remainingGuesses === 0) {
+    alert("You ran out of guesses!");
+    gameStart();
+}
 
 
-// function guess() {
-//     document.onkeyup = function (event) {
-//         var guess = event.key.toLowerCase();
-//         console.log(letter);
-//         for (var j = 0; j < answer.length; j++) {
-//             if (answer[j] === guess) {
-//                 dashes[j] = guess;
-//             }   
-//         }
-//       };
-// }
 
-
-  
-  
+ 
 
 
 
