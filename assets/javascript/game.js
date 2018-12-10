@@ -18,6 +18,7 @@ var remainingGuesses = 12;
 var output = "";
 var userGuess = "";
 var guessedLetters = [];
+var score = 0;
 
 console.log(answer);
 console.log(wordLength);
@@ -63,9 +64,14 @@ document.onkeyup = function (event) {
     // }
     if (win < 1) {
         document.getElementById("message").innerHTML = "You Win!";
-        location.reload();
+        document.getElementById("score").innerHTML = score++;
+        document.getElementById("remainingGuesses").innerHTML = 12;
+        // document.getElementById
+        // gameStart();
     } else if (remainingGuesses === 0) {
         document.getElementById("message").innerHTML = "You Lose :(";
+        document.getElementById("")
+        
 
     }
 
